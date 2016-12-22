@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 2.0 LifeCycle</title>
+    <script src="vue.2.0.js"></script>
+</head>
+<body>
+<div id="lc">
+    <p>{{message}}</p>
+    <input v-model="message">
+</div>
+
+<div class="lc-mount">
+    <h2>lc mount</h2>
+    <p>{{message}}</p>
+    <input v-model="message">
+    <button @click="fcClick">CLick me</button>
+</div>
+
+<!--<div class="lc-mount">-->
+    <!--<h2>lc mount</h2>-->
+    <!--<p>{{message}}</p>-->
+    <!--<input v-model="message">-->
+<!--</div>-->
+
+<!--phải đặt file js ở cuối cùng để nó load DOM trước-->
+<script src="lifeCycle.js"></script>
+</body>
+</html>
