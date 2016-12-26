@@ -79,6 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
+                    <example></example>
                     Laravel
                 </div>
 
@@ -91,5 +92,6 @@
                 </div>
             </div>
         </div>
+        <script src="{{url('/js/app.js')}}"></script>
     </body>
 </html>
