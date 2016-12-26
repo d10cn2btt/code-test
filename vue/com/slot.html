@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 2.0</title>
+    <script src="../vue.2.0.js"></script>
+
+</head>
+<body>
+<div id="parent">
+    <h1>This is parent's title</h1>
+    <com-slot>
+        <h2>This is the content inside component</h2>
+        <p slot="slot-header">This is slot header</p>
+    </com-slot>
+</div>
+
+<template id="com-slot">
+    <div>
+        <h2>I'm the child title</h2>
+        <slot>
+            This will only be displayed if there is no content
+            to be distributed.
+        </slot>
+        <slot name="slot-header">And this is slot's content inside component</slot>
+    </div>
+</template>
+
+<!--phải đặt file js ở cuối cùng để nó load DOM trước-->
+<script src="slot.js"></script>
+</body>
+</html>
