@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 2.0</title>
+    <script src="../vue.2.0.js"></script>
+
+</head>
+<body>
+<div id="todo-list-example">
+    <input
+        v-model="txtNew"
+        placeholder="input new todo"
+        @keyup.enter="addNewTodo"
+    >
+
+    <todo-com v-bind:todos="listTodo"></todo-com>
+</div>
+
+<template id="template-com">
+    <ul>
+        <p>{{reverseTxt()}}</p>
+        <p>{{computedReverseTxt}}</p>
+        <p>{{txtCom}}</p>
+        <li v-for="(todo, index) in todos">
+            {{todo}}
+            <button @click="removeTodo(index)">X</button>
+        </li>
+    </ul>
+</template>
+
+<!--phải đặt file js ở cuối cùng để nó load DOM trước-->
+<script src="todoCom.js"></script>
+<script src="todo.js"></script>
+</body>
+</html>
