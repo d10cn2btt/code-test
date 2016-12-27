@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 2.0</title>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../vue.2.0.js"></script>
+</head>
+<body>
+<div id="app-tab" class="container">
+    <tabs>
+        <tab name="Home">
+            <p>
+                Home page
+            </p>
+        </tab>
+
+        <tab name="About us" selected="true">
+            <p>
+                About us
+            </p>
+        </tab>
+
+        <tab name="Contact us">
+            <p>
+                Contact us
+            </p>
+        </tab>
+    </tabs>
+</div>
+
+<!--phải đặt file js ở cuối cùng để nó load DOM trước-->
+<script src="tab.js"></script>
+</body>
+</html>
