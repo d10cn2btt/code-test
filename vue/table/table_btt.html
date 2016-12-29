@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table Vue</title>
+    <script src="../vue.2.0.js"></script>
+    <script src="../underscore.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<template id="table-template">
+    <div>
+        <!--{{testcomuted}}-->
+        <table class="table">
+            <thead>
+            <tr>
+                <th @click="sortBy(cl)" v-for="cl in columns">{{cl}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="ct in filterData">
+                <td v-for="cl in columns">{{ct[cl]}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="row" id="table_btt">
+            <div class="form-group">
+                <label for="ks">Search</label>
+                <input id="ks" type="text" class="form-control" v-model="keysearch">
+            </div>
+
+            <table-btt :columns="tableColumn" :content="tableContent" :filter-key="keysearch"></table-btt>
+        </div>
+    </div>
+</div>
+<script src="table_btt.js"></script>
+</body>
+</html>

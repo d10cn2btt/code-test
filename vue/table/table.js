@@ -10,7 +10,7 @@ Vue.component('demo-grid', {
         var sortOrders = {}
         this.columns.forEach(function (key) {
             sortOrders[key] = 1
-        })
+        });
         return {
             sortKey: '',
             sortOrders: sortOrders
@@ -18,11 +18,11 @@ Vue.component('demo-grid', {
     },
     computed: {
         filteredData: function () {
-            return this.testmethod();
+            console.log('filter');
             var sortKey = this.sortKey
-            var filterKey = this.filterKey && this.filterKey.toLowerCase()
+            var filterKey = this.filterKey && this.filterKey.toLowerCase();
             var order = this.sortOrders[sortKey] || 1
-            var data = this.data
+            var data = this.data;
             if (filterKey) {
                 data = data.filter(function (row) {
                     return Object.keys(row).some(function (key) {
@@ -50,30 +50,8 @@ Vue.component('demo-grid', {
             this.sortKey = key
             this.sortOrders[key] = this.sortOrders[key] * -1
         },
-
-        testmethod: function()
-        {
-            var data = [
-                { name: 'btt', power: 12312323 },
-                { name: 'xxxxx', power: 9000 },
-            ];
-            var filterKey = this.filterKey && this.filterKey.toLowerCase();
-            if (filterKey) {
-                data = _.filter(data, function(row) {
-                    if (String(row.name).indexOf(filterKey) > -1 || String(row.power).indexOf(filterKey) > -1) {
-                        return 1;
-                    }
-                });
-                // data = data.filter(function (row) {
-                //     return Object.keys(row).some(function (key) {
-                //         return String(row[key]).toLowerCase().indexOf(filterKey) > -1
-                //     })
-                // })
-            }
-            return data;
-        }
     }
-})
+});
 
 // bootstrap the demo
 var demo = new Vue({
