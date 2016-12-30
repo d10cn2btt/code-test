@@ -4,13 +4,15 @@
 Vue.component('table-btt', {
     props: ['columns', 'content', 'filterKey'],
     data: function () {
-        let sortType = {}
+        let tmpType = {};
         this.columns.forEach(function (key) {
-            sortType[key] = 1
+            tmpType[key] = 1
         });
         return {
             sortKey: '',
-            sortType: sortType
+            sortType: tmpType,
+            testcontent: this.content,
+            querySearch: this.filterKey
         }
     },
     template: '#table-template',
@@ -18,6 +20,7 @@ Vue.component('table-btt', {
     computed: {
         // this function will be called when change filter
         filterData: function () {
+            console.log('filterdata');
             let content = this.content;
             let filterKey = this.filterKey.toLowerCase();
             let sortKey = this.sortKey;
@@ -35,36 +38,41 @@ Vue.component('table-btt', {
                     if (result != "") {
                         return true;
                     }
-                    
-                    // if (String(row.name).toLowerCase().indexOf(filterKey) > -1 || String(row.power).toLowerCase().indexOf(filterKey) > -1) {
-                    //     return true;
-                    // }
                 })
             }
 
             if (sortKey) {
-                console.log(sortKey);
                 content = _.sortBy(content, sortKey);
 
                 if (sortType == -1) {
                     content = content.reverse();
                 }
             }
-
             return content;
         },
 
         // this function will be called when change column
-        testcomuted: function() {
+        testcomuted: function () {
             console.log('testcomuted');
-            return this.columnta;
+            return this.content;
         }
     },
     methods: {
         sortBy: function (key) {
-            this.sortKey = key
+            this.sortKey = key;
             this.sortType[key] = this.sortType[key] * -1;
-        }
+        },
+        settypeorder: function (column) {
+            if (this.sortType[column] == 1) {
+                return 'asc';
+            } else {
+                return 'desc';
+            }
+            // console.log(column + " : " + this.sortKey + " : " + this.sortType);
+        },
+        removeItem: function (item) {
+            this.filterData.splice(item, 1);
+        },
     }
 });
 
@@ -78,8 +86,21 @@ let table = new Vue({
             {name: 'Jet Li', power: 8000},
             {name: 'Bruce Lee', power: 9000},
             {name: 'Jackie Chan', power: 7000}
-        ]
+        ],
+        itemContent: {
+            name: '',
+            power: ''
+        },
+        newname: '',
+        newpower: '',
+    },
+    methods: {
+        addNewItem: function () {
+            var newItem = {name: this.newname, power: this.newpower};
+            // can not use object, because it will be two-way binding
+            // var newItem = this.itemContent;
+            this.tableContent.push(newItem);
+        }
     }
 });
-
 

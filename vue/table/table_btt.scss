@@ -1,0 +1,35 @@
+table.table {
+  thead {
+    tr th {
+      text-transform: capitalize;
+      cursor: pointer;
+      opacity: 0.5;
+
+      &.active {
+        opacity: 1;
+      }
+
+      &.asc {
+        &:after {
+          content: "";
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-bottom: 4px solid black;
+          vertical-align: middle;
+          display: inline-block;
+        }
+      }
+
+      &.desc {
+        &:after {
+          content: "";
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-top: 4px solid black;
+          vertical-align: middle;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

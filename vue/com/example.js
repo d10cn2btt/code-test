@@ -37,11 +37,20 @@ Vue.component('counter2', {
 var example2 = new Vue({
     el: "#example2",
     data: {
-        total: 0
+        total: 0,
+        arg : 'button nay'
     },
     methods: {
         incrementParent: function() {
             this.total += 1;
+        },
+        testmethod: function () {
+            this.arg = 'abc123';
         }
+    },
+    computed: {
+        // testmethod: function () {
+        //     this.arg = 'computed';
+        // }
     }
 })

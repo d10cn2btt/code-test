@@ -45,7 +45,7 @@ Vue.component('tab', {
    `,
     data: function () {
         return {
-            isActive: false
+            isActive: this.selected
         }
     },
     mounted: function () {

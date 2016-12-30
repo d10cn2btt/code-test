@@ -1,0 +1,26 @@
+/* line 3, table_btt.scss */
+table.table thead tr th {
+  text-transform: capitalize;
+  cursor: pointer;
+  opacity: 0.5; }
+  /* line 8, table_btt.scss */
+  table.table thead tr th.active {
+    opacity: 1; }
+  /* line 13, table_btt.scss */
+  table.table thead tr th.asc:after {
+    content: "";
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid black;
+    vertical-align: middle;
+    display: inline-block; }
+  /* line 24, table_btt.scss */
+  table.table thead tr th.desc:after {
+    content: "";
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid black;
+    vertical-align: middle;
+    display: inline-block; }
+
+/*# sourceMappingURL=table_btt.css.map */

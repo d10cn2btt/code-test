@@ -12,15 +12,26 @@ Vue.component('todo-com', {
     },
     methods: {
         removeTodo: function (index) {
+            console.log('removeTodo');
             this.todos.splice(index, 1);
         },
         reverseTxt: function () {
+            console.log('reverseTxt');
             return this.txtCom.split('').reverse().join('');
+        },
+        testMethod: function() {
+            console.log('testMethod');
+            return 'btt123';
         }
     },
     computed: {
         computedReverseTxt: function () {
+            console.log('computedReverseTxt');
             return this.txtCom.split('').reverse().join('');
+        },
+        testComputed: function() {
+            console.log('testComputed');
+            return 'testComputed';
         }
     }
 
