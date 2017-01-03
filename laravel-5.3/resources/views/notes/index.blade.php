@@ -1,0 +1,2 @@
+Index notes
+{{dd($errors)}}
