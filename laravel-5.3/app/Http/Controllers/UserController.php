@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\UsersDataTable;
 use DB;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,14 +14,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(UsersDataTable $dataTable)
     {
-//        DB::listen(function($query) {
-//            var_dump($query->sql);
-//        });
-
-        $users = User::pluck('name', 'id')->toArray();
-        dd($users);
+        return $dataTable->render('user.index');
     }
 
     /**

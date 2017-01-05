@@ -7,6 +7,5 @@ Homestead.json
 Homestead.yaml
 .env
 
-public/*/*.js
-public/*/*.css
-public/*/*.css.map
+public/js
+public/css
