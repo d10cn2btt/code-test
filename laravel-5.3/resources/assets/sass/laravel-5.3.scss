@@ -1,0 +1,18 @@
+//dataTable
+#dataTableBuilder_wrapper {
+  .dt-buttons {
+    float: right;
+  }
+
+  thead {
+    tr th:last-child {
+      min-width: 230px;
+    }
+  }
+
+  tbody {
+    tr td:last-child {
+      text-align: center;
+    }
+  }
+}
