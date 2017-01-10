@@ -2,93 +2,92 @@
 
 namespace App\DataTables;
 
+use App\Common\DataTables\DataTableBase;
 use App\Models\User;
 use Yajra\Datatables\Services\DataTable;
 
-class UsersDataTable extends DataTable
-{
-    /**
-     * Display ajax response.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function ajax()
-    {
-        return $this->datatables
-            ->eloquent($this->query())
-            ->addColumn('action', function ($data) {
-                return render_column_action($data);
-            })
-            ->make(true);
-    }
+class UsersDataTable extends DataTableBase {
 
-    /**
-     * Get the query object to be processed by dataTables.
-     *
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Support\Collection
-     */
-    public function query()
-    {
-        $query = User::query();
+	protected $columns = array(
+		'id',
+		'name',
+		'email',
+		'created_at',
+		'updated_at',
+	);
 
-        return $this->applyScopes($query);
-    }
+	/**
+	 * Get the query object to be processed by dataTables.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Support\Collection
+	 */
+	public function query() {
+		$query = User::query();
 
-    /**
-     * Get default builder parameters.
-     *
-     * @return array
-     */
-    protected function getBuilderParameters()
-    {
-        return [
-            'order' => [[0, 'desc']],
-            'dom' => "<'row'<'col-md-6'lf><'col-md-6 text-right'B>><'row'<'col-md-12'tr>><'row'<'col-md-5'i><'col-md-7'p>>",
-            'buttons' => [
-                'create',
-                'export',
-                'print',
-            ],
-        ];
-    }
+		return $this->applyScopes( $query );
+	}
 
-    /**
-     * Optional method if you want to use html builder.
-     *
-     * @return \Yajra\Datatables\Html\Builder
-     */
-    public function html()
-    {
-        return $this->builder()
-            ->columns($this->getColumns())
-            ->ajax('')
-            ->addAction(['width' => '80px'])
-            ->parameters($this->getBuilderParameters());
-    }
+	/**
+	 * Display ajax response.
+	 *
+	 * @return \Illuminate\Http\JsonResponse
+	 */
+	public function ajax() {
+		$dataTable = $this->datatables->eloquent( $this->query() );
 
-    /**
-     * Get columns.
-     *
-     * @return array
-     */
-    protected function getColumns()
-    {
-        return [
-            'id',
-            'name',
-            'email',
-            'created_at',
-            'updated_at',
-        ];
-    }
+		$dataTable->addColumn( 'action', function ( $data ) {
+			return render_column_action( $data );
+		} );
 
-    /**
-     * Get filename for export.
-     *
-     * @return string
-     */
-    protected function filename()
-    {
-        return 'usersdatatables_' . time();
-    }
+		return $dataTable->make( true );
+	}
+
+	protected function getBuilderParameters() {
+		return [
+			'order'        => [ [ 0, 'desc' ] ],
+			'dom'          => "<'row'<'col-md-6'l><'col-md-6 text-right'B>><'row'<'col-md-12'tr>><'row'<'col-md-5'i><'col-md-7'p>>",
+			'buttons'      => $this->buttons,
+			'initComplete' => "function () {
+				var totalColumn = this.api().columns()[0].length;
+				var count = 0;
+                this.api().columns().every(function () {
+                	count++;
+                    if (count < totalColumn) {
+	                    var column = this;
+	                    
+	                    var input = document.createElement(\"input\");
+	                    input.style.width = '100%';
+	                    input.className += 'form-control ';
+	                    
+	                    if (count == 4) {
+							input.className += 'datepicker';	                        
+	                    }
+	                    
+	                    if (count == 5) {
+							input.className += 'datepicker';	                        
+	                    }
+	                    
+	                    $(input).appendTo($(column.footer()).empty())
+	                    .on('change', function () {
+	                        column.search($(this).val(), false, false, true).draw();
+	                    });
+	                    
+	                    $('.datepicker').datepicker({
+	                        format: 'yyyy-mm-dd'
+	                    });
+	                    
+                    }
+                });
+            }",
+		];
+	}
+
+	/**
+	 * Get filename for export.
+	 *
+	 * @return string
+	 */
+	protected function filename() {
+		return 'usersdatatables_' . time();
+	}
 }

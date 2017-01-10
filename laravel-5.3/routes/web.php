@@ -15,22 +15,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index');
 
 Route::resource('user', 'UserController');
+Route::resource('notes', 'NotesController');
 
-Route::get('/notes', 'NotesController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('cart', 'CartController');
-Route::get('cart-index-data', ['as' => 'cart.index.data', 'uses' => 'CartController@cartIndexData']);
+Route::get('/_debugbar/assets/stylesheets', [
+	'as' => 'debugbar-css',
+	'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@css'
+]);
 
-Route::resource('category', 'CategoryController');
-Route::get('category-index-data', ['as' => 'category.index.data', 'uses' => 'CategoryController@cateIndexData']);
+Route::get('/_debugbar/assets/javascript', [
+	'as' => 'debugbar-js',
+	'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@js'
+]);
 
-Route::resource('product', 'ProductController');
-Route::get('product-index-data', ['as' => 'product.index.data', 'uses' => 'ProductController@productIndexData']);
+Route::get('/_debugbar/open', [
+	'as' => 'debugbar-open',
+	'uses' => '\Barryvdh\Debugbar\Controllers\OpenController@handler'
+]);

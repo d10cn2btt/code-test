@@ -12,21 +12,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ url('/css/bootstrap.min.css') }}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ url('/css/font-awesome.min.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ url('/css/ionicons.min.css') }}">
-    <!-- Theme style -->
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="{{ url('/css/skin-blue.min.css') }}">
-    {{--custome css--}}
-    <link rel="stylesheet" href="{{ url('/css/laravel-5.3.css') }}">
-
+    <link rel="stylesheet" href="{{ url('/css/libraries.css') }}">
     @stack('css-file')
-
-    <link rel="stylesheet" href="{{ url('/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ url('/css/laravel-5.3.css') }}">
 
     <!-- Scripts -->
     <script>
@@ -102,18 +90,9 @@
 </div>
 <!-- ./wrapper -->
 
-<script src="{{ url('/js/jquery.1.11.1.js') }}"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{ url('/js/app.js') }}"></script>
-{{--select 2--}}
-<script src="{{ url('/js/select2.full.min.js') }}"></script>
+<script src="{{ url('/js/libraries.js') }}"></script>
 
+@stack('script-file')
 <script src="{{ url('/js/laravel-5.3.js') }}"></script>
-
-<!-- AdminLTE App -->
-<script src="{{ url('/js/LTE.app.min.js') }}"></script>
-<!-- Bootstrap JavaScript -->
-<!-- App scripts -->
-@stack('scripts')
 </body>
 </html>

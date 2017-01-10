@@ -20,15 +20,15 @@ if (!function_exists('render_column_action')) {
         $currentRoute = $tmpAr[0];
         $btnReturn = "";
         if ($btnView) {
-            $btnReturn .= '<a href="' . route($currentRoute.'.show', $model->id) . '" class="btn btn-primary"><i class="fa fa-eye"></i> View</a> ';
+            $btnReturn .= '<a href="' . route($currentRoute.'.show', $model->id) . '" class="btn btn-xs btn-primary"><i class="fa fa-eye"></i></a> ';
         }
 
         if ($btnEdit) {
-            $btnReturn .= '<a href="' . route($currentRoute.'.edit', $model->id) . '" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a> ';
+            $btnReturn .= '<a href="' . route($currentRoute.'.edit', $model->id) . '" class="btn btn-xs btn-success"><i class="fa fa-edit"></i></a> ';
         }
 
         if ($btnDelete) {
-            $btnReturn .= '<a url-delete="' . route($currentRoute.'.destroy', $model->id)."|". $model->id . '" class="btn btn-danger btn-delete-row-dttb""><i class="fa fa-trash"></i> Delete</a>';
+            $btnReturn .= '<a url-delete="' . route($currentRoute.'.destroy', $model->id)."|". $model->id . '" class="btn btn-xs btn-danger btn-delete-row-dttb""><i class="fa fa-trash"></i></a>';
         }
 
         return $btnReturn;

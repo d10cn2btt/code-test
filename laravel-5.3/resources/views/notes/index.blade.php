@@ -1,2 +1,0 @@
-Index notes
-{{dd($errors)}}
