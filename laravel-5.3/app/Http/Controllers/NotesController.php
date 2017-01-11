@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NotesRequest;
 use App\Models\Notes;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class NotesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NotesRequest $request)
     {
     }
 

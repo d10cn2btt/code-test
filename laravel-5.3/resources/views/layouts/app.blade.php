@@ -12,8 +12,8 @@
     <title>@yield('titlePage')</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ url('/css/libraries.css') }}">
     @stack('css-file')
+    <link rel="stylesheet" href="{{ url('/css/libraries.css') }}">
     <link rel="stylesheet" href="{{ url('/css/laravel-5.3.css') }}">
 
     <!-- Scripts -->

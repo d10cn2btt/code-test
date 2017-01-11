@@ -2,7 +2,6 @@
     <div class="box">
         <div class="box-body">
             <div class="row">
-                <input type="text" class="form-control datepicker">
                 <div class="col-md-12">
                     {!! $dataTable->table([
                         'class' => 'table table-striped table-hover dataTable',
@@ -25,10 +24,13 @@
 <script src="{{url('/plugins/dataTables/extensions/Buttons/js/buttons.flash.js')}}"></script>
 
 <script src="{{url('/plugins/datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{url('/plugins/select2/select2.full.min.js')}}"></script>
 {!! $dataTable->scripts() !!}
 @endpush
 
 @push('css-file')
 <link rel="stylesheet" href="{{url('/plugins/dataTables/dataTables.bootstrap.css') }}">
 <link rel="stylesheet" href="{{url('/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
+
+<link rel="stylesheet" href="{{url('/plugins/select2/select2.min.css') }}">
 @endpush
