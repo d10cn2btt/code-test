@@ -1,3 +1,3 @@
 @extends('layouts.app')
 
-@include('partials.dataTables')
+@include('_partials.dataTables')

@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('titlePage')</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ url('/css/libraries.css') }}">
@@ -45,27 +45,23 @@
                 <span class="icon-bar"></span>
             </a>
 
-            @include('partials.user.navbar_avatar')
+            @include('_partials.user.navbar_avatar')
         </nav>
     </header>
 
     <!-- =============================================== -->
 
     <!-- Left side column. contains the sidebar -->
-@include(('partials.sidebar.admin'))
+@include(('_partials.sidebar.admin'))
 <!-- =============================================== -->
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Blank page
+                @yield('titlePage')
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Examples</a></li>
-                <li class="active">Blank page</li>
-            </ol>
+            {!! Breadcrumbs::render() !!}
         </section>
 
         <!-- Main content -->

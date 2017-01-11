@@ -17,9 +17,9 @@ class Notes extends Model
     public static function getStatus($status = null)
     {
         $listStatus = array(
-            'STATUS_DEACTIVE' => trans('admin.field.note.status_deactive'),
-            'STATUS_DRAW' => trans('admin.field.note.status_draw'),
-            'STATUS_ACTIVE' => trans('admin.field.note.status_active'),
+            'STATUS_DEACTIVE' => trans('admin.notes.fields.status_deactive'),
+            'STATUS_DRAW' => trans('admin.notes.fields.status_draw'),
+            'STATUS_ACTIVE' => trans('admin.notes.fields.status_active'),
         );
 
         if (!empty($status) && isset($listStatus[$status])) {
