@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NotesRequest;
 use App\Models\Notes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class NotesController extends Controller
 {
@@ -38,6 +40,21 @@ class NotesController extends Controller
      */
     public function store(NotesRequest $request)
     {
+        DB::beginTransaction();
+        try {
+            if (Notes::saveNote($request)) {
+                DB::commit();
+                Flash::success('admin.msg.create.success');
+                return redirect()->route('notes.index');
+            } else {
+                throw new \Exception();
+            }
+        } catch (\Exception $e) {
+            DB::rollback();
+            Flash::error('admin.msg.create.fail');
+            return redirect()->route('notes.index');
+        }
+
     }
 
     /**
@@ -59,7 +76,11 @@ class NotesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $note = Notes::findOrFail($id);
+        return view('notes.edit', array(
+            'status' => Notes::getStatus(),
+            'note' => $note
+        ));
     }
 
     /**
@@ -69,9 +90,22 @@ class NotesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NotesRequest $request, $id)
     {
-        //
+        DB::beginTransaction();
+        try {
+            if (Notes::saveNote($request, $id)) {
+                DB::commit();
+                Flash::success(trans('admin.msg.update.success'));
+                return redirect()->route('notes.index');
+            } else {
+                throw new \Exception();
+            }
+        } catch (\Exception $e) {
+            DB::rollback();
+            Flash::error(trans('admin.msg.update.fail'));
+            return redirect()->route('notes.index');
+        }
     }
 
     /**

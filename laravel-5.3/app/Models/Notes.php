@@ -14,6 +14,11 @@ class Notes extends Model
     const STATUS_DRAW = 0;
     const STATUS_ACTIVE = 1;
 
+    /**
+     * @param null $status
+     *
+     * @return array|mixed
+     */
     public static function getStatus($status = null)
     {
         $listStatus = array(
@@ -27,5 +32,27 @@ class Notes extends Model
         }
 
         return $listStatus;
+    }
+
+    public static function saveNote($request, $idNote = null)
+    {
+        $transaction = false;
+        $data = array(
+            'title' => $request->title,
+            'body' => $request->body,
+            'status' => $request->status,
+            'created_by' => \Auth::id(),
+        );
+
+        if ($idNote === null) {
+            // create
+            $transaction = self::create($data);
+        } else {
+            // update
+            $note = self::find($idNote);
+            $transaction = $note->fill($data)->save();
+        }
+
+        return $transaction;
     }
 }

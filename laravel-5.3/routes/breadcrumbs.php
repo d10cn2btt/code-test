@@ -10,40 +10,31 @@ Breadcrumbs::register('home', function ($breadcrumds) {
     $breadcrumds->push('Home', route('home'));
 });
 
+Breadcrumbs::register('notes.show', function ($breadcrumbs, $idNote) {
+    $note = \App\Models\Notes::find($idNote);
+    $breadcrumbs->parent('notes.index');
+    $breadcrumbs->push($note->title, route('notes.show', $note->id));
+});
+
 $listRoute = array(
-    'note' => array(
-        'title' => 'Note',
-        'route' => 'notes',
-    ),
-    'user' => array(
-        'title' => 'User',
-        'route' => 'user',
-    ),
+    'notes',
+    'user'
 );
 
 foreach ($listRoute as $route) {
-    // Notes
-    Breadcrumbs::register($route['route'] . '.index', function ($breadcrumbs) use ($route) {
+    Breadcrumbs::register($route . '.index', function ($breadcrumbs) use ($route) {
         $breadcrumbs->parent('home');
-        $breadcrumbs->push($route['title'], route($route['route'] . '.index'));
+        $breadcrumbs->push(trans('admin.'.$route.'.pages.index'), route($route. '.index'));
     });
 
-    // Notes > Upload Photo
-    Breadcrumbs::register($route['route']. '.create', function ($breadcrumbs) use ($route) {
-        $breadcrumbs->parent($route['route'] . '.index');
-        $breadcrumbs->push('Create ' . $route['title'], route($route['route'] . '.create'));
+    Breadcrumbs::register($route . '.create', function ($breadcrumbs) use ($route) {
+        $breadcrumbs->parent($route . '.index');
+        $breadcrumbs->push(trans('admin.' . $route . '.pages.create'), route($route . '.create'));
     });
 
-    // Notes > [Photo Name]
-//    Breadcrumbs::register('notes.show', function ($breadcrumbs, $notes) {
-//        $breadcrumbs->parent('notes.index');
-//        $breadcrumbs->push($notes->title, route('notes.show', $notes->id));
-//    });
-//
-//    // Notes > [Photo Name] > Edit Photo
-//    Breadcrumbs::register('notes.edit', function ($breadcrumbs, $notes) {
-//        $breadcrumbs->parent('notes.show', $notes);
-//        $breadcrumbs->push('Edit Note', route('notes.edit', $notes->id));
-//    });
+    Breadcrumbs::register($route . '.edit', function ($breadcrumbs, $id) use ($route) {
+        $breadcrumbs->parent($route . '.show', $id);
+        $breadcrumbs->push(trans('admin.' . $route . '.pages.edit'), route('notes.edit', $id));
+    });
 
 }

@@ -7,6 +7,22 @@
  */
 
 return array(
+    'msg' => array(
+        'create' => array(
+            'fail' => 'Create Fail',
+            'success' => 'Create Succesfully'
+        ),
+        'update' => array(
+            'fail' => 'Update Fail',
+            'success' => 'Update Succesfully'
+        ),
+        'delete' => array(
+            'fail' => 'Delete Fail',
+            'success' => 'Delete Succesfully'
+        ),
+        '404' => 'Page Not Found'
+    ),
+
     'common' => array(
         'fields' => array(
             'id' => 'ID',
@@ -31,7 +47,7 @@ return array(
             'index' => 'List Notes',
             'create' => 'Create Note',
             'show' => 'Note Detail',
-            'update' => 'Edit Note',
+            'edit' => 'Edit Note',
         ),
     ),
     'users' => array(
@@ -46,7 +62,7 @@ return array(
             'index' => 'List Users',
             'create' => 'Create User',
             'show' => 'Note User',
-            'update' => 'Edit User',
+            'edit' => 'Edit User',
         ),
     ),
 );
