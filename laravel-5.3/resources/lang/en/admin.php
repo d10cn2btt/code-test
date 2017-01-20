@@ -7,6 +7,9 @@
  */
 
 return array(
+    'ops' => array(
+        'search_default' => 'Please select'
+    ),
     'msg' => array(
         'create' => array(
             'fail' => 'Create Fail',
@@ -20,7 +23,7 @@ return array(
             'fail' => 'Delete Fail',
             'success' => 'Delete Succesfully'
         ),
-        '404' => 'Page Not Found'
+        '404' => 'Page Not Found',
     ),
 
     'common' => array(
@@ -35,6 +38,7 @@ return array(
     'notes' => array(
         'title' => 'Note Management',
         'fields' => array(
+            'id' => 'ID',
             'title' => 'Title',
             'body' => 'Body',
             'status' => 'Status',
@@ -50,9 +54,10 @@ return array(
             'edit' => 'Edit Note',
         ),
     ),
-    'users' => array(
+    'user' => array(
         'title' => 'User Management',
         'fields' => array(
+            'id' => 'ID',
             'name' => 'Name',
             'email' => 'Email',
             'password' => 'Password',

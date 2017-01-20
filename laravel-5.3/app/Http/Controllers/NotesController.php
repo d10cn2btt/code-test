@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\NotesDataTable;
 use App\Http\Requests\NotesRequest;
 use App\Models\Notes;
 use Illuminate\Http\Request;
@@ -15,9 +16,9 @@ class NotesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(NotesDataTable $dataTable)
     {
-        return view('notes.index');
+        return $dataTable->render('notes.index');
     }
 
     /**

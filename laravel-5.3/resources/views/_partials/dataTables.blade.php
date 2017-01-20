@@ -15,6 +15,7 @@
 
 @push('script-file')
 <script src="{{url('/plugins/dataTables/jquery.dataTables.js')}}"></script>
+<script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
 <script src="{{url('/plugins/dataTables/dataTables.bootstrap.js')}}"></script>
 <script src="{{url('/plugins/dataTables/buttons.server-side.js')}}"></script>
 

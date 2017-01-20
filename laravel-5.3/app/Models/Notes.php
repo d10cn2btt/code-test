@@ -14,6 +14,11 @@ class Notes extends Model
     const STATUS_DRAW = 0;
     const STATUS_ACTIVE = 1;
 
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     /**
      * @param null $status
      *
@@ -23,11 +28,11 @@ class Notes extends Model
     {
         $listStatus = array(
             self::STATUS_DEACTIVE => trans('admin.notes.fields.status_deactive'),
-            self::STATUS_DRAW => trans('admin.notes.fields.status_draw'),
-            self::STATUS_ACTIVE => trans('admin.notes.fields.status_active'),
+            self::STATUS_DRAW     => trans('admin.notes.fields.status_draw'),
+            self::STATUS_ACTIVE   => trans('admin.notes.fields.status_active'),
         );
 
-        if (!empty($status) && isset($listStatus[$status])) {
+        if ($status !== null && isset($listStatus[$status])) {
             return $listStatus[$status];
         }
 
@@ -37,10 +42,10 @@ class Notes extends Model
     public static function saveNote($request, $idNote = null)
     {
         $transaction = false;
-        $data = array(
-            'title' => $request->title,
-            'body' => $request->body,
-            'status' => $request->status,
+        $data        = array(
+            'title'      => $request->title,
+            'body'       => $request->body,
+            'status'     => $request->status,
             'created_by' => \Auth::id(),
         );
 
@@ -49,7 +54,7 @@ class Notes extends Model
             $transaction = self::create($data);
         } else {
             // update
-            $note = self::find($idNote);
+            $note        = self::find($idNote);
             $transaction = $note->fill($data)->save();
         }
 

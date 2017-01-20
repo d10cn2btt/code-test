@@ -1,0 +1,11 @@
+#dataTableBuilder_wrapper .dt-buttons {
+  float: right; }
+#dataTableBuilder_wrapper tbody tr td:last-child {
+  text-align: center; }
+#dataTableBuilder_wrapper tfoot {
+  display: table-row-group; }
+
+ul.breadcrumb li {
+  text-transform: capitalize; }
+
+/*# sourceMappingURL=laravel-5.3.css.map */

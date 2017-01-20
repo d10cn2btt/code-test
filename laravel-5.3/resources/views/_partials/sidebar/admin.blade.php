@@ -14,12 +14,12 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-user"></i> <span>{{trans('admin.users.title')}}</span>
+                    <i class="fa fa-user"></i> <span>{{trans('admin.user.title')}}</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i> {{trans('admin.users.pages.index')}}</a></li>
-                    <li><a href="{{route('user.create')}}"><i class="fa fa-circle-o"></i> {{trans('admin.users.pages.create')}}</a></li>
+                    <li><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i> {{trans('admin.user.pages.index')}}</a></li>
+                    <li><a href="{{route('user.create')}}"><i class="fa fa-circle-o"></i> {{trans('admin.user.pages.create')}}</a></li>
                 </ul>
             </li>
             <li class="treeview">

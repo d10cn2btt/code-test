@@ -33,4 +33,22 @@ if (!function_exists('render_column_action')) {
 
         return $btnReturn;
     }
+
+    if (!function_exists('show_content_ck')) {
+        /**
+         * Show content with Ckeditor.
+         *
+         * @param $content
+         * @param int $limit
+         * @return string
+         */
+        function show_content_ck($content, $limit = 50)
+        {
+            $body = strip_tags($content);
+            if (mb_strlen($body) > $limit) {
+                return mb_substr($body, 0, $limit) . '...';
+            }
+            return $body;
+        }
+    }
 }

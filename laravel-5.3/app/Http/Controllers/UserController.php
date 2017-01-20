@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\UserDataTable;
 use App\DataTables\UsersDataTable;
 use DB;
 use App\Models\User;
@@ -14,7 +15,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(UsersDataTable $dataTable)
+    public function index(UserDataTable $dataTable)
     {
         return $dataTable->render('user.index');
     }
