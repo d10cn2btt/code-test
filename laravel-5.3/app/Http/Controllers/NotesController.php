@@ -28,15 +28,15 @@ class NotesController extends Controller
      */
     public function create()
     {
-	    return view('notes.create', array(
-	        'status' => Notes::getStatus()
+        return view('notes.create', array(
+            'status' => Notes::getStatus()
         ));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(NotesRequest $request)
@@ -61,18 +61,22 @@ class NotesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Notes $note)
     {
-        //
+        $notes = Notes::status(Notes::STATUS_DEACTIVE)->with('users')->get();
+
+        return view('notes.show', array(
+            'notes' => $notes
+        ));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -87,8 +91,8 @@ class NotesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(NotesRequest $request, $id)
@@ -112,7 +116,7 @@ class NotesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

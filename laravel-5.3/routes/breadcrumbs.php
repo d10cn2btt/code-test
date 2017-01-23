@@ -10,8 +10,7 @@ Breadcrumbs::register('home', function ($breadcrumds) {
     $breadcrumds->push('Home', route('home'));
 });
 
-Breadcrumbs::register('notes.show', function ($breadcrumbs, $idNote) {
-    $note = \App\Models\Notes::find($idNote);
+Breadcrumbs::register('notes.show', function ($breadcrumbs, $note) {
     $breadcrumbs->parent('notes.index');
     $breadcrumbs->push($note->title, route('notes.show', $note->id));
 });

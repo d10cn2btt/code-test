@@ -44,16 +44,19 @@ abstract class DataTableBase extends DataTable
      */
     protected function getBuilderParameters()
     {
-        return [
+        $builder = [
             'order'        =>   [[0, 'desc']],
             'dom'          =>   "<'row'<'col-md-6'l><'col-md-6 text-right'B>><'row'<'col-md-12'tr>><'row'<'col-md-5'i><'col-md-7'p>>",
             'buttons'      =>   $this->buttons,
-            'scrollX'      => true,
-            'fixedColumns' =>   array(
-                'leftColumns' =>  2
-            ),
             'initComplete' => $this->setInitComplete(),
         ];
+
+        if (!empty($this->fixedColumns)) {
+            $builder['scrollX'] = true;
+            $builder['fixedColumns'] = $this->fixedColumns;
+        }
+
+        return $builder;
     }
 
     protected function setInitComplete()

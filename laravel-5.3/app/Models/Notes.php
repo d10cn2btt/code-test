@@ -14,6 +14,9 @@ class Notes extends Model
     const STATUS_DRAW = 0;
     const STATUS_ACTIVE = 1;
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function users()
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -39,6 +42,11 @@ class Notes extends Model
         return $listStatus;
     }
 
+    /**
+     * @param $request
+     * @param null $idNote
+     * @return bool|static
+     */
     public static function saveNote($request, $idNote = null)
     {
         $transaction = false;
@@ -59,5 +67,35 @@ class Notes extends Model
         }
 
         return $transaction;
+    }
+
+    /**
+     * Example Scope
+     * @param $query
+     * @param $status
+     * @return mixed
+     */
+    public function scopeStatus($query, $status)
+    {
+        return $query->where('status', $status);
+    }
+
+    /**
+     * Example Accessor
+     * @param $value
+     * @return string
+     */
+    public function getTitleAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    /**
+     * example function mutator
+     * @param $value
+     */
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value . " example function mutator";
     }
 }

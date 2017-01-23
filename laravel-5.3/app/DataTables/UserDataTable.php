@@ -10,6 +10,10 @@ use Yajra\Datatables\Services\DataTable;
 
 class UserDataTable extends DataTableBase
 {
+//    protected $fixedColumns = array(
+//        'leftColumns' =>  2
+//    );
+
     protected $model = 'user';
     /**
      * Get the query object to be processed by dataTables.
