@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         //
+        $this->mapBttRoutes();
     }
 
     /**
@@ -74,6 +75,17 @@ class RouteServiceProvider extends ServiceProvider
             'prefix' => 'api',
         ], function ($router) {
             require base_path('routes/api.php');
+        });
+    }
+
+    protected function mapBttRoutes()
+    {
+        Route::group([
+//            this middleware is a element in param $middlewareGroups in file Kernel.php
+            'middleware' => 'web',
+            'namespace' => $this->namespace
+        ], function ($router) {
+            require base_path('routes/btt.php');
         });
     }
 }
