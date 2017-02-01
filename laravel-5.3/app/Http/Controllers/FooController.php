@@ -16,6 +16,18 @@ class FooController extends Controller
 
     public function foo()
     {
+        $this->hashExampleServiceProvider();
         return $this->repository->get();
+    }
+
+    public function hashExampleServiceProvider()
+    {
+        $hash = app('hash');
+        $pass = $hash->make('btt');
+        if ($hash->check('btt', $pass)) {
+            echo 'yes';
+        } else {
+            echo 'no';
+        }
     }
 }
