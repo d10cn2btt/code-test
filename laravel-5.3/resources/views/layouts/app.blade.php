@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     @stack('css-file')
+    <link rel="stylesheet" href="{{url('/plugins/select2/select2.min.css') }}">
     <link rel="stylesheet" href="{{ url('/css/libraries.css') }}">
     <link rel="stylesheet" href="{{ url('/css/laravel-5.3.css') }}">
 
@@ -85,9 +86,10 @@
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
+<script src="{{url('/js/app.js')}}"></script>
 
 <script src="{{ url('/js/libraries.js') }}"></script>
-
+<script src="{{url('/plugins/select2/select2.full.min.js')}}"></script>
 @stack('script-file')
 <script src="{{ url('/js/laravel-5.3.js') }}"></script>
 </body>

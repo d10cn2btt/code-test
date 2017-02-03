@@ -25,7 +25,6 @@
 <script src="{{url('/plugins/dataTables/extensions/Buttons/js/buttons.flash.js')}}"></script>
 
 <script src="{{url('/plugins/datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-<script src="{{url('/plugins/select2/select2.full.min.js')}}"></script>
 {!! $dataTable->scripts() !!}
 @endpush
 
@@ -33,5 +32,4 @@
 <link rel="stylesheet" href="{{url('/plugins/dataTables/dataTables.bootstrap.css') }}">
 <link rel="stylesheet" href="{{url('/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
 
-<link rel="stylesheet" href="{{url('/plugins/select2/select2.min.css') }}">
 @endpush
