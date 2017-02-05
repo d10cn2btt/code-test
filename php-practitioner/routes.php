@@ -6,10 +6,10 @@
  * Time: 17:34
  */
 
-$subDomain = 'php-practitioner';
+define('SUBDOMAIN', 'php-practitioner');
 
-$routes->setRoute([
-    $subDomain . '' => 'controller/IndexController.php',
-    $subDomain . '/about' => 'controller/AboutController.php',
-    $subDomain . '/contact' => 'controller/ContactController.php'
+$router->setRoute([
+    SUBDOMAIN . '' => 'controller/IndexController.php',
+    SUBDOMAIN . '/about' => 'controller/AboutController.php',
+    SUBDOMAIN . '/contact' => 'controller/ContactController.php'
 ]);

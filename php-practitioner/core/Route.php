@@ -15,6 +15,14 @@ class Route
         $this->routes = $routes;
     }
 
+    public static function load($file)
+    {
+        $router = new self();
+        require $file;
+
+        return $router;
+    }
+
     public function mapRoute($uri)
     {
         if (array_key_exists($uri, $this->routes)) {

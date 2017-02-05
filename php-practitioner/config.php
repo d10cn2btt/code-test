@@ -10,7 +10,7 @@ return [
     'database' => [
         'dbname' => 'laravel-5.3',
         'username' => 'root',
-        'password' => '',
+        'password' => 'truong123',
         'connection' => 'mysql:host=127.0.0.1',
         'options' => [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
