@@ -32,6 +32,11 @@
                     <li><a href="{{route('notes.create')}}"><i class="fa fa-circle-o"></i> {{trans('admin.notes.pages.create')}}</a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="{{route('sort.cate')}}">
+                    <i class="fa fa-arrows"></i> <span>Sort</span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

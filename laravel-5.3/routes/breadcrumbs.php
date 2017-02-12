@@ -15,6 +15,11 @@ Breadcrumbs::register('notes.show', function ($breadcrumbs, $note) {
     $breadcrumbs->push($note->title, route('notes.show', $note->id));
 });
 
+Breadcrumbs::register('sort.cate', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Sort', route('sort.cate'));
+});
+
 $listRoute = array(
     'notes',
     'user'
@@ -35,5 +40,4 @@ foreach ($listRoute as $route) {
         $breadcrumbs->parent($route . '.show', $id);
         $breadcrumbs->push(trans('admin.' . $route . '.pages.edit'), route('notes.edit', $id));
     });
-
 }

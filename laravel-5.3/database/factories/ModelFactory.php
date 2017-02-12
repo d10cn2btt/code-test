@@ -22,3 +22,28 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(\App\Models\L25::class, function (\Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'parent' => $faker->numberBetween(1, 3),
+        'priority' => $faker->numberBetween(1, 4),
+    ];
+});
+
+$factory->define(\App\Models\L3::class, function (\Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'parent' => $faker->numberBetween(1, 4),
+        'priority' => $faker->numberBetween(1, 20),
+    ];
+});
+
+$factory->define(\App\Models\L35::class, function (\Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'parent' => $faker->numberBetween(1, 20),
+        'priority' => $faker->numberBetween(1, 100),
+    ];
+});

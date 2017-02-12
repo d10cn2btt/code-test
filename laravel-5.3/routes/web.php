@@ -17,8 +17,12 @@ Route::get('/', function () {
 
 Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'home']);
 
-Route::resource('user', 'UserController');
-Route::resource('notes', 'NotesController');
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('user', 'UserController');
+    Route::resource('notes', 'NotesController');
+    Route::get('/sort-cate', ['uses' => 'SortController@index', 'as' => 'sort.cate']);
+});
+
 
 Auth::routes();
 
