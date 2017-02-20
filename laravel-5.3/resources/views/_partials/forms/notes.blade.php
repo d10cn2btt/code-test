@@ -22,6 +22,7 @@
 <script src="{{url('/plugins/ckeditor/ckeditor.js')}}"></script>
 <script>
     CKEDITOR.replace( 'body' );
+    $(".select2").select2();
 </script>
 @endpush
 

@@ -46,6 +46,7 @@ elixir((mix) => {
 
         // js
         .copy(paths.assetsJs + '/laravel-5.3.js', 'public/js/laravel-5.3.js')
+        .copy(paths.assetsJs + '/sort_category.js', 'public/js/sort_category.js')
 
         // plugin
         .copy(paths.plugins, 'public/plugins')

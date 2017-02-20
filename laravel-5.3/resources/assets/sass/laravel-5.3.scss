@@ -28,6 +28,7 @@
     display: table-row-group;
   }
 }
+
 //=========== dataTable - end
 
 //breadcrumb - start =========
@@ -36,4 +37,28 @@ ul.breadcrumb {
     text-transform: capitalize;
   }
 }
+
 //=========== breadcrumb - end
+.sortable-cate {
+  .selected-cate {
+    color: #8c1a1a;
+  }
+  .sortable-drag {
+    background: #daf4ff;
+  }
+
+  li {
+    cursor: pointer;
+
+    &.sortable-ghost {
+      opacity: 0.4;
+      background-color: #F4E2C9;
+    }
+  }
+  .sortable-ghost {
+    opacity: .2;
+  }
+}
+
+#cate25-sortable {
+}

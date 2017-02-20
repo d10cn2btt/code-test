@@ -20,7 +20,10 @@ Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'home']);
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('user', 'UserController');
     Route::resource('notes', 'NotesController');
+
     Route::get('/sort-cate', ['uses' => 'SortController@index', 'as' => 'sort.cate']);
+    Route::get('/get-catel3/{idcate25}', ['uses' => 'SortController@getCateL3', 'as' => 'get.catel3']);
+    Route::get('/get-catel35/{idcate3}', ['uses' => 'SortController@getCateL35', 'as' => 'get.catel35']);
 });
 
 
