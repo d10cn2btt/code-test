@@ -5,9 +5,12 @@
         <div class="col-md-4 cate25">
             <div class="panel panel-primary">
                 <div class="panel-heading"><h3 class="panel-title">Level 2.5</h3></div>
-                <ul class="list-group sortable-cate" id="cate25-sortable">
+                <ul class="list-group sortable-cate" id="cate25_sortable">
+                    @php
+                    $cate25Ids = json_encode(array_pluck($listL25, 'id'));
+                    @endphp
                     @foreach($listL25 as $l25)
-                        <li onclick="getCate3({{$l25->id}}, this)" class="list-group-item">
+                        <li data-id="{{$l25->id}}" onclick="getCate3({{$l25->id}}, this)" class="list-group-item">
                             {{$l25->id}}. {{$l25->name}} - {{$l25->priority}}
                         </li>
                     @endforeach
@@ -18,7 +21,7 @@
             <div class="row">
                 <div class="panel panel-primary">
                     <div class="panel-heading"><h3 class="panel-title">Level 3</h3></div>
-                    <ul class="list-group sortable-cate" id="cate3-sortable"></ul>
+                    <ul class="list-group sortable-cate" id="cate3_sortable"></ul>
                 </div>
             </div>
         </div>
@@ -38,5 +41,8 @@
 
 @push('script-file')
 <script src="{{url('/plugins/sortable/Sortable.js')}}"></script>
+<script>
+    {{--var cate25Order = {{$cate25Ids}}--}}
+</script>
 <script src="{{url('/js/sort_category.js')}}"></script>
 @endpush
