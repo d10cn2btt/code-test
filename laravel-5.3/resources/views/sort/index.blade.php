@@ -10,7 +10,7 @@
                     $cate25Ids = json_encode(array_pluck($listL25, 'id'));
                     @endphp
                     @foreach($listL25 as $l25)
-                        <li data-id="{{$l25->id}}" onclick="getCate3({{$l25->id}}, this)" class="list-group-item">
+                        <li data-name="{{$l25->name}}" data-id="{{$l25->id}}" onclick="getCate3({{$l25->id}}, this)" class="list-group-item">
                             {{$l25->id}}. {{$l25->name}} - {{$l25->priority}}
                         </li>
                     @endforeach

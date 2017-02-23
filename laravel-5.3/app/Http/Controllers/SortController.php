@@ -4,6 +4,7 @@ use App\Models\L25;
 use App\Models\L3;
 use App\Models\L35;
 use App\Repositories\L25Repository;
+use Illuminate\Http\Request;
 
 class SortController extends Controller
 {
@@ -40,8 +41,9 @@ class SortController extends Controller
     /**
      * @param $idCateL3
      */
-    public function getCateL35($idCateL3)
+    public function getCateL35(Request $request, $idCateL3)
     {
+        dd($request->all());
         return L35::parent($idCateL3)->priority()->get()->toArray();
     }
 }
