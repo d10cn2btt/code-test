@@ -8,12 +8,25 @@
 </head>
 <body>
 <div id="currency">
-    <currency-input :ttt="label"></currency-input>
+    <currency-input :ttt="list_data"></currency-input>
+    <component2 :data_from_vue="list_data"></component2>
 </div>
 
 <template id="cu-com">
     <div>
-        <label>{{ ttt }}</label>
+        {{data_currency.first_name}}
+        <button @click="clickBtn()">click me</button>
+    </div>
+</template>
+
+<template id="com2">
+    <div>
+        This is template of component2
+        <ul>
+            <li v-for="data in data_from_vue">
+                {{data.label}} : {{data.price}} & {{data.shipping}}
+            </li>
+        </ul>
     </div>
 </template>
 

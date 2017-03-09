@@ -58,6 +58,17 @@ ul.breadcrumb {
   .sortable-ghost {
     opacity: .2;
   }
+
+  .btn-group {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+
+    .btn {
+      padding: 5px 10px;
+      border: 1px solid #bfacac;
+    }
+  }
 }
 
 #cate25-sortable {

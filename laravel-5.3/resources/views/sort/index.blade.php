@@ -12,6 +12,13 @@
                     @foreach($listL25 as $l25)
                         <li data-name="{{$l25->name}}" data-id="{{$l25->id}}" onclick="getCate3({{$l25->id}}, this)" class="list-group-item">
                             {{$l25->id}}. {{$l25->name}} - {{$l25->priority}}
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupCateL25" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">...</button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupCateL25">
+                                    <li><a href="#">Dropdown link</a></li>
+                                    <li><a href="#">Dropdown link</a></li>
+                                </ul>
+                            </div>
                         </li>
                     @endforeach
                 </ul>
