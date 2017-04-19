@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Bootstrap Datetime Picker JA :: Demo</title>
+    <link href="bootstrap_v3.3.7.css" rel="stylesheet">
+    <!--<link href="bootstrap_v2.3.2.css" rel="stylesheet">-->
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap-datetimepicker.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="jquery.hash-contents.js"></script>
+    <script src="bootstrap-datetimepicker.js"></script>
+    <script>
+        jQuery(function ($) {
+            $.fn.datetimepicker.Constructor.prototype.fillMinutes = function () {
+                var minutesRange = 5;
+                var minutesX = 4;
+
+                function padLeft(s, l, c) {
+                    if (l < s.length) return s;
+                    else return Array(l - s.length + 1).join(c || ' ') + s;
+                }
+
+                var hour = 60;
+                var minutesCol = Math.floor((hour - 1) / minutesRange);
+                var minutesY = Math.ceil(minutesCol / minutesX);
+                var table = this.widget.find('.timepicker .timepicker-minutes table');
+                table.parent().hide();
+                var html = '';
+                var current = 0;
+                for (var i = 0; i < minutesY; i++) {
+                    html += '<tr>';
+                    for (var j = 0; j < minutesX; j += 1) {
+                        if (current < hour) {
+                            var c = current.toString();
+                            html += '<td class="minute">' + padLeft(c, 2, '0') + '</td>';
+                        }
+                        else {
+                            html += '<td/>'
+                        }
+                        current += minutesRange;
+                    }
+                    html += '</tr>';
+                }
+                table.html(html);
+            };
+
+            $.fn.datetimepicker.Constructor.prototype.actions.incrementMinutes = function() {
+                this._date.setUTCMinutes(this._date.getUTCMinutes() + 5);
+            };
+
+            var api = $('#datetimepicker1').datetimepicker({
+                format: 'yyyy/MM/dd hh:mm'
+            }).data('datetimepicker');
+            api.widget.find('.timepicker-picker tr').each(function () {
+                var td = $(this).find('td');
+                td.eq(3).hide();
+                td.eq(4).hide();
+            });
+        });
+    </script>
+<body>
+<div>
+    <div class="input-group date datepicker group-divide">
+        <input class="form-control" id="published_at" name="published_at" type="text" value="">
+        <span class="input-group-addon">
+            <div class="icon_calendar padL10">
+                <svg class="cb cb-calendar">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cb-calendar"></use>
+                </svg>
+            </div>
+        </span>
+    </div>
+
+    <div id="datetimepicker1" class="input-append">
+        <input type="text"/><span class="add-on"><i></i></span>
+    </div>
+</div>
+</body>
+</html>
